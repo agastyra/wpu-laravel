@@ -3,9 +3,9 @@
 @section('container')
 
 <article>
-    <h2>{{$posts["judul"]}}</h2>
-    <h5>{{$posts["penulis"]}}</h5>
-    <p>{{$posts["isi"]}}</p>
+    <h2>{{$posts->title}}</h2>
+    {{-- <h5>{{$posts->author}}</h5> --}}
+    {!! $posts->body !!}
 </article>
 
 <a href="/blogs">Kembali ke halaman blog</a>
