@@ -16,11 +16,11 @@ class BlogController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show(Blog $blog)
     {
         return view('blog', [
             "judul" => "Single Blog",
-            "posts" => Blog::find($slug),
+            "posts" => $blog,
         ]);
     }
 }
