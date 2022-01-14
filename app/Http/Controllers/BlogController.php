@@ -12,7 +12,7 @@ class BlogController extends Controller
     {
         return view('blogs', [
             "judul" => "Blogs",
-            "posts" => Blog::all(),
+            "blogs" => Blog::all(),
         ]);
     }
 
@@ -20,7 +20,7 @@ class BlogController extends Controller
     {
         return view('blog', [
             "judul" => "Single Blog",
-            "posts" => $blog,
+            "blogs" => $blog,
         ]);
     }
 }

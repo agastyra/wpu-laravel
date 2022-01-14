@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,20 @@ Route::get('/about', function () {
         "nama" => "Rangga Agastya",
         "email" => "mochariyanto92@smk.belajar.id",
         "gambar" => "rngga.jpg",
+    ]);
+});
+
+Route::get('/categories', function () {
+    return view('categories', [
+        "judul" => "Blog Categories",
+        "categories" => Category::all()
+    ]);
+});
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('category', [
+        "judul" => $category->name,
+        "blogs" => $category->blogs,
     ]);
 });
 

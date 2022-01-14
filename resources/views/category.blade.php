@@ -2,9 +2,7 @@
 
 @section('container')
 
-<h2>Judul</h2>
-<h5>Rangga Agastya</h5>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, quo.</p>
+<h1>Blog Category : {{ $judul }}</h1>
 
 @foreach ($blogs as $blog)
 
@@ -12,9 +10,12 @@
     <h2>
         <a href="/blogs/{{$blog->slug}}">{{$blog->title}}</a>
     </h2>
-    {{-- <h5>By: {{$blog->author}}</h5> --}}
     <p>{{$blog->excerpt}}</p>
 </article>
+
+
 @endforeach
+
+<a href="/categories">Kembali ke halaman categories</a>
 
 @endsection

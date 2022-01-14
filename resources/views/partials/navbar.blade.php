@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ ($judul === 'Blogs' ? 'active' : '') }}" href="/blogs">Blogs</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($judul === 'Blog Categories' ? 'active' : '') }}" href="/categories">Categories</a>
+                </li>
             </ul>
         </div>
     </div>

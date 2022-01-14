@@ -3,9 +3,10 @@
 @section('container')
 
 <article>
-    <h2>{{$posts->title}}</h2>
-    {{-- <h5>{{$posts->author}}</h5> --}}
-    {!! $posts->body !!}
+    <h2>{{$blogs->title}}</h2>
+    <p>By. Rangga Agasyta in <a href="/categories/{{ $blogs->category->slug }}">{{ $blogs->category->name }}</a></p>
+    {{-- <h5>{{$blogs->author}}</h5> --}}
+    {!! $blogs->body !!}
 </article>
 
 <a href="/blogs">Kembali ke halaman blog</a>
