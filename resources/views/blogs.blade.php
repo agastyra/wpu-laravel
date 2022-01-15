@@ -2,18 +2,16 @@
 
 @section('container')
 
-<h2>Judul</h2>
-<h5>Rangga Agastya</h5>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, quo.</p>
-
 @foreach ($blogs as $blog)
-
-<article class="mb-5">
+<article class="mb-5 border-bottom pb-4">
     <h2>
-        <a href="/blogs/{{$blog->slug}}">{{$blog->title}}</a>
+        <a href="/blogs/{{$blog->slug}}" class="text-decoration-none">{{$blog->title}}</a>
     </h2>
+    <p>By. <a href="#" class="text-decoration-none">{{ $blog->user->name }}</a> in <a href="/categories/{{ $blog->category->slug }}" class="text-decoration-none">{{ $blog->category->name }}</a></p>
     {{-- <h5>By: {{$blog->author}}</h5> --}}
     <p>{{$blog->excerpt}}</p>
+
+    <a href="/blogs/{{$blog->slug}}" class="text-decoration-none">Read more...</a>
 </article>
 @endforeach
 
