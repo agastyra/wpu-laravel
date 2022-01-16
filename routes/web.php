@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
-use App\Models\Blog;
-use App\Models\Category;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,19 +31,9 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/categories', function () {
-    return view('categories', [
-        "judul" => "Blog Categories",
-        "categories" => Category::all()
-    ]);
-});
+Route::get('/categories', [CategoryController::class, "index"]);
 
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category', [
-        "judul" => $category->name,
-        "blogs" => $category->blogs,
-    ]);
-});
+Route::get('/categories/{category:slug}', [CategoryController::class, "show"]);
 
 Route::get('/blogs', [BlogController::class, "index"]);
 

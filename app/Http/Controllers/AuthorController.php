@@ -17,9 +17,9 @@ class AuthorController extends Controller
 
     public function show(User $author)
     {
-        return view('author', [
+        return view('list', [
             'judul' => $author->name,
-            'blogs' => $author->blog
+            'blogs' => $author->blogs->load(['author', 'category'])
         ]);
     }
 }

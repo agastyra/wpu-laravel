@@ -9,9 +9,9 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('blogs', [
+        return view('list', [
             "judul" => "Blogs",
-            "blogs" => Blog::all(),
+            "blogs" => Blog::with(['author', 'category'])->get(),
         ]);
     }
 
