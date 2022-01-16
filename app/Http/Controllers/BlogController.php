@@ -11,7 +11,7 @@ class BlogController extends Controller
     {
         return view('list', [
             "judul" => "Blogs",
-            "blogs" => Blog::with(['author', 'category'])->get(),
+            "blogs" => Blog::latest()->get(),
         ]);
     }
 
