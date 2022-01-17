@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +44,7 @@ Route::get('blogs/{blog:slug}', [BlogController::class, "show"]);
 Route::get('authors', [AuthorController::class, "index"]);
 
 Route::get('authors/{author:username}', [AuthorController::class, "show"]);
+
+Route::get('/login', [LoginController::class, "index"]);
+
+Route::get('/register', [RegisterController::class, "index"]);
