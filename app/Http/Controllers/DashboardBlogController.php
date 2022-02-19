@@ -83,7 +83,10 @@ class DashboardBlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('dashboard.blog.edit', [
+            'blog' => $blog,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -95,7 +98,24 @@ class DashboardBlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $rules = [
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'body' => 'required'
+        ];
+
+        if ($request->slug != $blog->slug) {
+            $rules['slug'] = 'required|unique:blogs';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200, '...');
+
+        Blog::whereId($blog->id)->update($validatedData);
+
+        return redirect('/dashboard/blogs')->with('success', 'Post has been updated!');
     }
 
     /**
@@ -106,6 +126,8 @@ class DashboardBlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        Blog::destroy($blog->id);
+
+        return redirect('/dashboard/blogs')->with('success', 'Blog has been deleted!');
     }
 }
