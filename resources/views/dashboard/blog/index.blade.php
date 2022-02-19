@@ -5,8 +5,14 @@
         <h1 class="h2">My blog</h1>
     </div>
 
-    <div class="table-responsive col-lg-8">
+    <div class="table-responsive col-lg-10">
         <a href="/dashboard/blogs/create" class="btn btn-primary mb-3">Create new blog</a>
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
