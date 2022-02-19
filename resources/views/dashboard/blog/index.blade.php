@@ -6,6 +6,7 @@
     </div>
 
     <div class="table-responsive col-lg-8">
+        <a href="/dashboard/blogs/create" class="btn btn-primary mb-3">Create new blog</a>
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
