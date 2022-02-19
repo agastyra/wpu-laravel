@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class DashboardBlogController extends Controller
@@ -30,7 +31,10 @@ class DashboardBlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.blog.create', [
+            'judul' => 'New blog',
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -41,7 +45,7 @@ class DashboardBlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
