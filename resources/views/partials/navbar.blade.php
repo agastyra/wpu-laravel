@@ -11,17 +11,17 @@
                     <a class="nav-link {{ $judul === 'Home' ? 'active' : '' }}" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $judul === 'About' ? 'active' : '' }}" href="/about">About</a>
+                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $judul === 'Blogs' ? 'active' : '' }}" href="/blogs">Blogs</a>
+                    <a class="nav-link {{ Request::is('blogs*') ? 'active' : '' }}" href="/blogs">Blogs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $judul === 'Blog Categories' ? 'active' : '' }}"
+                    <a class="nav-link {{ Request::is('categories*') ? 'active' : '' }}"
                         href="/categories">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $judul === 'Authors' ? 'active' : '' }} " href="/authors">Authors</a>
+                    <a class="nav-link {{ Request::is('authors*') ? 'active' : '' }} " href="/authors">Authors</a>
                 </li>
             </ul>
 
