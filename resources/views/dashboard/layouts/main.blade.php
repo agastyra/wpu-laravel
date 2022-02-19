@@ -12,6 +12,18 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
+
+    {{-- Trix editor --}}
+
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
+
+    <style>
+        button.trix-button.trix-button--icon.trix-button--icon-attach {
+            display: none;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -38,6 +50,41 @@
     </script>
 
     <script src="/js/dashboard.js"></script>
+
+    <script>
+        const title = document.getElementById('title');
+        const slug = document.getElementById('slug');
+
+        function stringToSlug(str) {
+            str = str.replace(/^\s+|\s+$/g, ""); // trim
+            str = str.toLowerCase();
+
+            // remove accents, swap ñ for n, etc
+            var from = "åàáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+            var to = "aaaaaaeeeeiiiioooouuuunc------";
+
+            for (var i = 0, l = from.length; i < l; i++) {
+                str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+            }
+
+            str = str
+                .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+                .replace(/\s+/g, "-") // collapse whitespace and replace by -
+                .replace(/-+/g, "-") // collapse dashes
+                .replace(/^-+/, "") // trim - from start of text
+                .replace(/-+$/, ""); // trim - from end of text
+
+            return str;
+        }
+
+        title.addEventListener('keyup', function() {
+            slug.value = stringToSlug(title.value);
+        })
+
+        document.addEventListener('trix-file-accept', function(e) {
+            e.preventDefault();
+        })
+    </script>
 </body>
 
 </html>
