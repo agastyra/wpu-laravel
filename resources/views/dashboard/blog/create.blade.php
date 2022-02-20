@@ -58,4 +58,17 @@
             <a href="/dashboard/blogs" class="text-decoration-none text-black-50 ml-5">Cancel</a>
         </form>
     </div>
+
+    <script defer>
+        const title = document.getElementById("title");
+        const slug = document.getElementById("slug");
+
+        title.addEventListener("keyup", function() {
+            slug.value = stringToSlug(title.value);
+        });
+
+        document.addEventListener("trix-file-accept", function(e) {
+            e.preventDefault();
+        });
+    </script>
 @endsection
